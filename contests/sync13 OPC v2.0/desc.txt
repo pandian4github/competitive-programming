@@ -1,0 +1,28 @@
+Design a calculator to calculate your GPA. Possible grades are S, A, B, C, D and E. S corresponds to 10 credits, A to 9, B to 8, C to 7, D to 6 and E to 5. There are n subjects. Each subject has a number of credits and the grade obtained by the student.
+GPA of the student is the summation of grades obtained multiplied by the number of credits for each student divided by the total number of credits. for example,
+if input is n = 3. three subjects have credits 3, 4 and 5. a student has obtained grade S, A and B respectively, then GPA = (3*10 + 4*9 + 5*8)/(3+4+5)
+
+input:
+First line consists of t, the number of test cases (1 <= t <= 20)
+Each test case starts with n, the number of subjects (1 <= n <= 16)
+next n lines consist of credits for that subject followed by grade obtained by the student
+
+output:
+for each test case, print the GPA of the student rounded off to two decimal places.
+
+1
+12
+4 D
+1 E
+1 S
+3 D
+1 E
+2 A
+4 A
+4 A
+3 C
+1 C
+1 B
+2 D
+
+7.41

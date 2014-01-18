@@ -1,0 +1,25 @@
+Jaavs likes to make a new pearl necklace for his girlfriend. He collects the pearls and places them on a table in a particular order. All pearls are only of three 
+types “r”,”s”,”t”. Now, Jaavs wants to make a pearl necklace such that it shouldn't contain all three types of pearls. To make a necklace, pearls should be taken 
+sequentially. Jaavs likes to know how many different types of necklaces he can make. Help him find it.
+
+Note: Each necklace should contain at least a single pearl. And, no two pearls in the string are identical which means that two pearls of the same color are treated
+differently because they are of different shade and tint.
+
+First line consists of t, the number of test cases (1 <= t <=30)
+Next t lines consist of string s with only lowercase r, s and t (1 <= |s| <= 10^6)
+
+For each input string, print the required number of necklaces he can make.
+
+3
+rst
+rsrsr
+srsrt
+
+5
+15
+12
+
+Explanation for testcase #1 :
+The possible necklaces are : {r, s, t, rs, st}
+rst is not possible because it contains all three pearls
+rt is not possible because the pearls are not continuous

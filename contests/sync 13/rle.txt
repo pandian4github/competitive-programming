@@ -1,0 +1,16 @@
+RLE
+
+	You need to perform run length encoding on a given string. The encoding is as follows : 'consecutive character count' followed by '!' followed by the 'character'. 
+Do not encode the characters unless they lead to compression !
+
+First line consists of t, the number of test cases (1 <= t <= 10)
+Next t lines consist of a string, s with |s| <= 100000
+
+For each test case, output a single line printing the run length encoding of the input string
+
+2
+aabbbbbccccc
+aaaabbbbbbbbbbbbbbbccccc
+
+aa5!b5!c
+4!a15!b5!c

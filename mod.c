@@ -1,0 +1,1 @@
+#include<stdio.h>int main(){int t,i,j;scanf("%d",&t);int a[t];for(i=0;i<t;i++)scanf("%d",&a[i]);for(i=0;i<t;i++){if(a[i]==0)printf("NOT POSSIBLE\n");for(j=1;j<=a[i];j++)printf("%d ",j%a[i]);print("\n");return 0;}    

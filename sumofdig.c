@@ -1,0 +1,177 @@
+#include<stdlib.h>
+#include<math.h>
+#include<stdio.h>
+long long int Ordsum(long long int,long long int);
+long long int Spsum(long long int,long long int);
+struct Sum
+ {
+   long long int sum;
+   struct Sum *next;
+ };
+typedef struct Sum* List;
+List Insert(long long int n,List l)
+ {
+   List t=l,new;
+   if(l==NULL)
+    {
+     l=(List)malloc(sizeof(struct Sum));
+     l->sum=n;
+     l->next=NULL;
+    }
+    else
+    { 
+     while(t->next!=NULL)
+      t=t->next;
+     new=(List)malloc(sizeof(struct Sum));
+     new->sum=n;
+     new->next=NULL;
+     t->next=new;
+    } 
+   return l;
+ }
+void Print(List l)
+ {
+  List t=l;
+  while(t!=NULL)
+   {
+    printf("%lld\n",t->sum);
+    t=t->next;
+   }
+ }   
+long long int Ordsum(long long int x,long long int y)
+ {
+   long long int i,j;
+   long long int s=0;
+   for(i=x;i<=y;i++)
+    {
+     j=i;
+     while(j!=0)
+     {
+      s=s+j%10;
+      j=j/10;
+     }
+    } 
+   return s;
+ }     
+
+long long int presum(int a)
+ {
+   switch(a)
+    {
+     case 2 : return 855;
+     case 3 : return 12600;
+     case 4 : return 166500;
+     case 5 : return 2070000;
+     case 6 : return 24750000;
+     case 7 : return 288000000;
+     case 8 : return 3285000000;
+     case 9 : return 36900000000; 
+   } 
+ }   
+   
+   
+long long int Difsum(long long int x,long long int y,int d1,int d2)
+ {
+   long long int s=0;
+   int i;
+   s=s+Spsum(x,(pow(10,d1)-1));
+   s=s+Spsum(pow(10,d2-1),y);
+   for(i=d1+1;i<d2;i++)
+    s=s+presum(i);
+   return s;
+ }   
+
+
+int Check(long long int a,long long int b,int d,int f1,int f2)
+ {
+   if((a-f1*pow(10,d-1))==0&&(b-f2*pow(10,d-1))==(int)(0.999999999999999*pow(10,d-1)))
+    return 1;
+  else
+    return 0;
+ }    
+   
+long long int Spsum(long long int a,long long int b)
+ {
+   int d1=0,d2=0,d=0,f1,f2,v;
+   long long int i,t1,t2,s=0;
+   for(i=a;i!=0;i=i/10)
+     d1++;
+   for(i=b;i!=0;i=i/10)
+     d2++;
+   f1=a/pow(10,d1-1);
+   f2=b/pow(10,d2-1);
+   if(a>b)
+    return 0;
+   if(d2<4)
+    return Ordsum(a,b);
+   if(a==0)
+    {
+      s=s+(d2-1)*45*pow(10,d2-2)*(f2)+f2*(f2-1)*pow(10,d2-1)/2;
+      s=s+Spsum(f2*pow(10,d2-1),b);
+      return s;
+    }  
+   if(d1==d2)
+   {
+     v=Check(a,b,d1,f1,f2);
+     d=d1;
+     if(v)
+        {
+         s=s+(d-1)*45*pow(10,d-2)*(f2-f1+1)+pow(10,d-1)*(f2*(1+f2)+f1*(1-f1))/2;  
+         return s;
+        }
+     else
+       if(f1==f2)
+        s=s+Spsum(a-f1*pow(10,d-1),b-f2*pow(10,d-1))+f1*(b-a+1);
+       else
+        {
+         t1=(f1+1)*pow(10,d-1);
+         t2=(f2+1)*pow(10,d-1)-1;
+         s=s+Spsum(a,t1-1)+Spsum(t1,t2)-Spsum(b+1,t2);
+        }
+   }
+   else
+       if(d1+1==d2)
+        s=Spsum(a,pow(10,d1)-1)+Spsum(pow(10,d1),b);   
+      else
+         s=Difsum(a,b,d1,d2);
+      
+   return s;
+ } 
+     
+int main()
+ {
+   long long int a,b,t1,t2,su;
+   int d1,d2;
+   List l=NULL;
+   scanf("%lld%lld",&a,&b);
+   while(1)
+    {
+      if(a==0)
+       a++;
+      if(a==0&&b==0)
+       {
+        l=Insert(0,l);
+        goto p; 
+       } 
+      d1=d2=0;
+      for(t1=a;t1!=0;t1/=10)
+       d1++;
+      for(t2=b;t2!=0;t2/=10)
+       d2++;
+      if(d1==d2)
+         su=Spsum(a,b);
+      else
+       if(d1+1==d2)
+        su=Spsum(a,pow(10,d1)-1)+Spsum(pow(10,d1),b);   
+      else
+         su=Difsum(a,b,d1,d2);
+      l=Insert(su,l);
+  p: scanf("%lld%lld",&a,&b);
+      if(a==-1&&b==-1)
+         break;   
+    }
+   Print(l);
+   return 0; 
+ 
+ }          
+   
