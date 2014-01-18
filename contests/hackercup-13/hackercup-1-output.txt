@@ -1,0 +1,50 @@
+Case #1: 2589
+Case #2: 1336
+Case #3: 4266
+Case #4: 5991
+Case #5: 4877
+Case #6: 4566
+Case #7: 3559
+Case #8: 5113
+Case #9: 3056
+Case #10: 2962
+Case #11: 5495
+Case #12: 1657
+Case #13: 3558
+Case #14: 491
+Case #15: 152
+Case #16: 2081
+Case #17: 5873
+Case #18: 6469
+Case #19: 5982
+Case #20: 5510
+I.Word desc of a problem :
+largest prime factor//taken
+II.
+Graph colouring
+Passing thro a tunnel with rewards and penalties(king-soldier problem) //taken
+True-false//taken
+Last man standing//taken
+III.DP
+Maximisation
+knapsack
+Dijkstra
+IV.optimal algo
+prime Sieve //taken
+memoization  //taken
+segment tree //taken
+TRIE //taken
+suffix tree //taken
+V.Using snippets
+Inversion count
+LCM using GCD //taken
+VI.Reverse coding
+3 questions //taken
+VII.Recurrence relations
+2 questions //taken
+
+FINALS:
+five reverse coding questions
+
+
+Prelims:

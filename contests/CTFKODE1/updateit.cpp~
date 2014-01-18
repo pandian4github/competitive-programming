@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<fstream>
+#include<math.h>
+#include<stdlib.h>
+using namespace std;
+
+#define scani(a) scanf("%d",&a);
+#define fori(a,b) for(i=a;i<=b;i++)
+#define fork(a,b) for(k=a;k<=b;k++)
+#define forj(a,b) for(j=a;j<=b;j++)
+
+int main()
+{
+	int t, n, q, l, r, val, i, temp, u;
+	ofstream inp;
+	ofstream oup;
+	inp.open("updateitinp.txt");
+	oup.open("updateitoup.txt");
+	scani(t)
+	inp<<t<<"\n";
+	while(t--)
+	{
+		n = 10000;
+		int arr[n+1];
+		fori(0, n)
+			arr[i] = 0;
+		u = 100000;
+		inp<<n<<" "<<u<<"\n";
+		while(u--)
+		{
+			l = rand() % n;
+			r = rand() % n;
+			if(l>r)
+			{
+				temp = l;
+				l = r;
+				r = temp;
+			}
+			val = rand()%10000;
+			inp<<l<<" "<<r<<" "<<val<<"\n";
+			arr[l] += val;
+			arr[r+1] -= val;
+		}
+		fori(1, n)
+			arr[i] += arr[i-1];
+		q = 10000;
+		inp<<q<<"\n";
+		while(q--)
+		{
+			l = rand() % n;
+			inp<<l<<"\n";
+			oup<<arr[l]<<"\n";
+		}
+		fori(0, n-1)
+			oup<<arr[i]<<" ";
+		oup<<"\n";
+		
+	}
+	return 0;
+}

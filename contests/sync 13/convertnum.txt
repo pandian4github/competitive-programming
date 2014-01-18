@@ -1,0 +1,9 @@
+Convert number
+
+You are given two numbers A and B. You need to convert A into B by a certain set of operations. An operation is defined as one among these
+	1) multiplying the number by a prime number
+	2) dividing the number by a prime number
+	3) multiplying the number by a perfect square
+One additional constraint is that you cannot do the multiplication and division in any order. All the multiplication operations should follow the division 
+operations.
+Now, given A and B, find the minimum number of operations required to convert A to B.

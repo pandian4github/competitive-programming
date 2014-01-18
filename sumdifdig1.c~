@@ -1,0 +1,37 @@
+#include<math.h>
+#include<stdio.h>
+char ch;
+int Digits(int n)
+ {
+   int c=0;
+   while(n!=0)
+    {
+      c++;
+      n=n/10;
+    } 
+   return c;
+ }   
+
+int main()
+ {
+   int n,a,i,j,k;
+   int s=0;
+   scanf("%d%d",&a,&n);
+   int d=1;
+   int di,dii;
+   for(i=a;i<=n;i++)
+    {
+     di=Digits(i);
+     j=i;
+    dii=di;
+    for(k=0;k<dii;k++)
+       {
+         s=s+d*(int)(j/pow(10,--di));
+         d=-1*d;
+         j=j-(int)(j/pow(10,di))*pow(10,di);
+       }
+    }
+   printf("%d\n",s);
+   return 0;
+ } 
+        

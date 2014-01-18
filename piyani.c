@@ -1,0 +1,80 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct piyani
+ {
+   int n;
+   int t;
+   struct piyani* next;
+ };
+typedef struct piyani* List;
+List Findprev(List t,List l)
+ {
+   while(l!=NULL)
+    {
+      if(l->next==t)
+        return l;
+      l=l->next;
+    }
+ }      
+List search(List l,int n)
+ {
+   List t=l,new,temp;
+   int c=0;
+   while(t!=NULL)
+    {
+      if(t->n==n)
+        {
+          if(t==l)
+           {
+             return l->next;            
+           } 
+          else
+          {
+            temp=Findprev(t,l);
+            temp->next=t->next;
+            free(t);
+           }
+           c=1;
+           return l;
+                   
+        }  
+       t=t->next;
+     }
+     if(c==0)
+      {
+        new=(List)malloc(sizeof(struct piyani));
+        new->n=n;
+        new->next=l->next;
+        l->next=new;
+        return l; 
+      }  
+   }    
+
+List Do(List l,int n)
+ {
+   List new,t=l;
+   if(l==NULL)
+    {
+      l=(List)malloc(sizeof(struct piyani));
+      l->n=n;
+      l->next=NULL;
+    }
+   else
+     search(l,n);
+   }
+          
+   
+   
+int main()
+ {
+   int i,n,p;
+   List l=NULL;
+   scanf("%d",&n);      
+   for(i=0;i<n;i++)
+    {
+      scanf("%d",&p);
+      l=Do(l,p);
+    }
+   printf("%d\n",l->n);
+   return 0;
+ }     
